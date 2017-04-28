@@ -1,0 +1,8 @@
+{% extends 'index.html' %}
+{% block content %}
+    <ul>
+    {% for product in products %}
+        <li><a href="/products/detail/{{product.pk}}">{{product.name}}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

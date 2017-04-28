@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<h1>{{product.name}}</h1>
+<p>{{product.price}}</p>
+<p>{{product.description}}</p>
+<p>{{product.get_category_display}}</p>
+
+{% for feedback in feedbacks %}
+<p><strong>{{feedback.nick}}</strong>: {{feedback.date}}</p>
+<p>{{feedback.feedback}}</p>
+<hr>
+{% endfor %}
+    <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+        <p><input type="submit" value="Ok"></p>
+    </form>
+
+{% endblock %}
