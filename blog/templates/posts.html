@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for p in posts %}
+    <li><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></li>
+{% endfor %}
+
+<a href="{% url 'add_post' %}">dobavit</a>
+
+
+</body>
+</html>

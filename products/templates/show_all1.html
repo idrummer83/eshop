@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block content %}
+    <ul>
+    {% for product in object_list %}
+        <li><a href="/products/detail/{{product.pk}}">{{product.name}}</a></li>
+    {% endfor %}
+    </ul>
+
+<p>
+    <a href="/products/all">&lt;&lt;</a>
+    {% if page_obj.has_previous %}
+        <a href="/products/all/?p={{page_obj.previous_page_number}}">&lt;</a>
+    {% endif %}
+
+    {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+    {% if page_obj.has_next %}
+        <a href="/products/all/?p={{page_obj.next_page_number}}">&gt;</a>
+    {% endif %}
+    <a href="/products/all/?p={{page_obj.paginator.num_pages}}">&gt;&gt;</a>
+</p>
+
+
+{% endblock %}

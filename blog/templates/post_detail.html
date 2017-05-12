@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.name }}</title>
+</head>
+<body>
+
+    <h1>{{ post.name }}</h1>
+    <p>avtor: {{ post.user }}</p>
+    <p>data: {{ post.date }}</p>
+    <p>post: {{ post.text }}</p>
+
+    {% if request.user == post.user %}
+
+    <a href="{% url 'edit_post' post.date post.slug %}"> redaktirovat</a>
+
+    {% endif %}
+</body>
+</html>

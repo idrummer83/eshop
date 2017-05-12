@@ -1,8 +1,31 @@
 {% extends 'index.html' %}
 {% block content %}
+
+<p>logged user is = {{user}}</p>
+
+
     <ul>
-    {% for product in products %}
-        <li><a href="/products/detail/{{product.pk}}">{{product.name}}</a></li>
+    {% for product in object_list %}
+{#        <li><a href="/products/detail/{{product.pk}}">{{product.name}}</a></li>#}
+{#        <li><a href="{% url 'detail' product.pk %}">{{product.name}}</a></li>#}
+        <li><a href="{{ product.get_absolute_url }}">{{product.name}}</a></li>
+{#        <li><a href="{% url 'products:detail' product.pk %}">{{product.name}}</a></li>----namespace#}
     {% endfor %}
     </ul>
+
+<p>
+{#    <a href="/products/all">&lt;&lt;</a>#}
+    <a href="{% url 'show_all' %}">&lt;&lt;</a>
+    {% if products.has_previous %}
+{#        <a href="/products/all/?p={{products.previous_page_number}}">&lt;</a>#}
+        <a href="{% url 'show_all' %}?p={{products.previous_page_number}}">&lt;</a>
+    {% endif %}
+    {{products.number}} of {{products.paginator.num_pages}}
+    {% if products.has_next %}
+        <a href="/products/all/?p={{products.next_page_number}}">&gt;</a>
+    {% endif %}
+    <a href="/products/all/?p={{products.paginator.num_pages}}">&gt;&gt;</a>
+</p>
+
+
 {% endblock %}

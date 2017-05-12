@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import F
+from django.urls.base import reverse
 
 CATEGORIES = (
     (0, 'Auto'),
@@ -36,6 +37,8 @@ class Product(models.Model):
 
     def get_price(self):
         return "{} грн.".format(self.price)
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'product_id': self.pk})
 
 
 class Feedback(models.Model):

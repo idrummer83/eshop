@@ -6,7 +6,21 @@
 </head>
 <body>
     <h1>Shop Products</h1>
+    <ul>
+{#        <li><a href=""></a></li>#}
+
+        <li><a href="/">main page</a></li>
+        <li><a href="/products/all">all</a></li>
+    </ul>
+    <hr>
+
+    <a href="/logout">user is = {{user}}</a>
+
     <p>USD = {{USD}} hrn.</p>
+
+    <hr>
+
+    <h2>block content</h2>
     {% block content %}
     <p>{{rand}}</p>
     {% endblock %}
